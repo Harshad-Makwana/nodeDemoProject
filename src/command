@@ -1,0 +1,23 @@
+const { models } = require("mongoose")
+
+
+//
+npm init -y
+npm i express
+npm i mongoose
+npm i hbs
+npm i bcryptjs
+npm i jsonwebtoken
+npm i dotenv
+mkdir src
+cd src
+mkdir db
+mkdir models
+type nul > app.js
+
+
+// package.json
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js -e js,hbs"
+  },
