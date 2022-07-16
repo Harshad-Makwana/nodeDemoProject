@@ -9,6 +9,12 @@ npm i hbs
 npm i bcryptjs
 npm i jsonwebtoken
 npm i dotenv
+npm i cookie-parser
+npm i multer
+npm i validater
+npm install body-parser 
+npm install express-validator
+
 mkdir src
 cd src
 mkdir db

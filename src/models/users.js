@@ -17,11 +17,11 @@ const usersSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
-    image: {
+    profile: {
         type:String,
         require: true,
     },
-    full_name:{
+    name:{
         type:String,
         require: true,
     },

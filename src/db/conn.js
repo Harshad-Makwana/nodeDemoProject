@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
-mongoose.connect('mongodb+srv://root:Root%40123@cluster0.9btr83m.mongodb.net/Test2?retryWrites=true&w=majority',
+const  databaseName = process.env.DB_NAME;
+const  databaseUserName = process.env.DB_USER_NAME;
+const  databasePassword = process.env.DB_PASSWORD;
+
+mongoose.connect(`mongodb+srv://${databaseUserName}:${databasePassword}@cluster0.9btr83m.mongodb.net/${databaseName}?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,

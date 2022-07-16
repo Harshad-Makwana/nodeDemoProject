@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    {{>header}}
-</head>
-<body>
-    {{>navbar}}
-    <div class="modal-body">
-        <div class="container">
-            <form action="/register" method="POST" class="row g-3">
-                <div class="col-md-6">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="inputEmail">
-                </div>
-               
-                <div class="col-md-6">
-                    <label for="inputPhoneNumber" class="form-label">Phone Number</label>
-                    <input type="number" name="phone_number" class="form-control" id="inputPhoneNumber" placeholder="">
-                </div>
+    <head>
+        {{>header}}
+    </head>
+    <body>
+        {{>navbar}}
 
-                 <div class="col-md-6">
-                    <label for="inputPassword" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="inputPassword">
-                </div>
+        <div class="modal-body">
+            <div class="container">
 
-                 <div class="col-md-6">
-                    <label for="inputConfirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" name="confirmpassword" class="form-control" id="inputConfirmPassword">
-                </div>
+                {{#if errorsAlert}}  
+                    {{#each errorsAlert}}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                             {{msg}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {{/each}}         
+                {{/if}}
+                
+                
+                <form action="/register" method="POST" enctype="multipart/form-data" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="inputEmail">
+                    </div>
+                
+                    <div class="col-md-6">
+                        <label for="inputPhoneNumber" class="form-label">Phone Number</label>
+                        <input type="number" name="phone_number" class="form-control" id="inputPhoneNumber" placeholder="">
+                    </div>
 
-                <div class="col-md-6">
-                    <label for="inputProfileImage" class="form-label">Profile Image</label>
-                    <input type="file" name="image" class="form-control" id="inputProfileImage">
-                </div>
+                    <div class="col-md-6">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword">
+                    </div>
 
-                <div class="col-md-6">
-                    <label for="inputFullName" class="form-label">Full name</label>
-                    <input type="text" name="full_name" class="form-control" id="inputFullName" placeholder="">
-                </div>
+                    <div class="col-md-6">
+                        <label for="inputConfirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" name="passwordConfirmation" class="form-control" id="inputConfirmPassword">
+                    </div>
 
-                <div class="col-md-6">
-                    <label for="inputDob" class="form-label">DOB</label>
-                    <input type="date" name="dob" class="form-control" id="inputDob">
-                </div>
+                    <div class="col-md-6">
+                        <label for="inputProfileImage" class="form-label">Profile Image</label>
+                        <input type="file" name="profile" class="form-control" id="inputProfileImage">
+                    </div>
 
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-            </form>
+                    <div class="col-md-6">
+                        <label for="inputFullName" class="form-label">Full name</label>
+                        <input type="text" name="name" class="form-control" id="inputFullName" placeholder="">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputDob" class="form-label">DOB</label>
+                        <input type="date" name="dob" class="form-control" id="inputDob">
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
+    </body>
 </html>
