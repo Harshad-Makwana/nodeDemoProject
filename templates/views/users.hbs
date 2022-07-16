@@ -15,24 +15,7 @@
                 <th scope="col">DOB</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                </tr>
-                <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-                </tr>
+            <tbody id="tbody">
             </tbody>
         </table>
 
@@ -47,4 +30,36 @@
         </nav>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        load_data();
+
+        function load_data() {
+            $.ajax({
+                url: "user/data",
+                method: "POST",
+                data: {action:"fetch"},
+                dataType:"JSON",
+                success:function(data) {
+                    let tableData = '';
+                    if(data.length > 0) {       
+                        for(let count = 0; count < data.length; count++) {
+                            tableData += `
+                                <tr>
+                                    <th scope="row">` + data[count].email + `</th>
+                                    <td>` + data[count].name + `</td>
+                                    <td>` + data[count].phone_number + `</td>
+                                    <td>` +  new Date(data[count].dob).toLocaleDateString() + `</td>
+                                </tr>
+                            `;
+                        }
+                    }
+                    $('#tbody').html(tableData)
+                }
+            });
+        }
+    })
+</script>
 </html>

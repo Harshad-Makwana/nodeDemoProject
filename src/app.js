@@ -206,23 +206,32 @@ async(req,res) => {
 app.get("/profile", auth, async (req,res) => {
     const token = req.cookies.jwt;
     const verifyUser = jwt.verify(token, process.env.SECRET_KEY);
-    const userDetails = await User.findOne({_id: verifyUser._id});
+    let userDetails = await User.findOne({_id: verifyUser._id});
     let isLogin = false;
     if(req.cookies.jwt) {
         isLogin = jwt.verify(req.cookies.jwt, process.env.SECRET_KEY);
     }
 
-    res.render("profile", {userDetails, isLogin});
+    const dob=  new Date(userDetails.dob).toLocaleDateString();
+    res.render("profile", {userDetails, isLogin, dob});
 });
 
-app.get("/users", auth, async (req,res) => {
-    console.log("Show", req.cookies.jwt);
+app.post("/user/data", auth, async (req,res) => {
+    
     const allUser = await User.find().select({ password: 0, tokens: 0 });
+
+    console.log("allUser", allUser);
+
+    return res.status(200).jsonp(allUser);
+});
+
+
+app.get("/users", auth, async (req,res) => {
     let isLogin = false;
     if(req.cookies.jwt) {
         isLogin = jwt.verify(req.cookies.jwt, process.env.SECRET_KEY);
     }
-    res.render("users", {allUser, isLogin});
+    res.render("users", {isLogin});
 });
 
 
