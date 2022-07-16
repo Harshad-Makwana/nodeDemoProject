@@ -11,3 +11,17 @@
 .input-search {
     float: right;
 }
+
+.center {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.profile {
+    margin-top: 58px;
+    margin-bottom: 26px;
+}
+
+.img-div {
+    margin-bottom: 30px;
+}

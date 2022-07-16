@@ -171,6 +171,7 @@ async(req,res) => {
     try {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
+            console.log("isMatch--------3");
             const errorsAlert = errors.array();
     
             console.log("errorsAlert:", errorsAlert);
@@ -181,21 +182,29 @@ async(req,res) => {
             const email = req.body.email;
             const password = req.body.password;
             const getUserDetails = await User.findOne({email});
-            const isMatch = await bcrypt.compare(password, getUserDetails.password);
 
-            if(!isMatch) {
+            let matchFlage = false;
+
+            if(getUserDetails) {
+                const isMatch = await bcrypt.compare(password, getUserDetails.password);    
+                if(isMatch) {
+                    matchFlage = true;
+                    const token = await getUserDetails.generateAuthToken();
+                    res.cookie("jwt", token, getCookiesSetting());
+                    res.redirect("/home");
+                }
+            }
+
+            if(!matchFlage) {
                 const errorsAlert = [{
                     value: '',
                     msg: 'Email and Password are Invalid',
                     param: 'password',
                     location: 'body'
                 }];
-                res.render("login",  {errorsAlert});
-            } else {
-                const token = await getUserDetails.generateAuthToken();
-                res.cookie("jwt", token, getCookiesSetting());
-                res.redirect("/home");
-            }        
+                res.render("login",  {errorsAlert});              
+            }
+        
         }
     } catch (error) {
         res.send("Invalid Email:", error);
@@ -217,11 +226,7 @@ app.get("/profile", auth, async (req,res) => {
 });
 
 app.post("/user/data", auth, async (req,res) => {
-    
     const allUser = await User.find().select({ password: 0, tokens: 0 });
-
-    console.log("allUser", allUser);
-
     return res.status(200).jsonp(allUser);
 });
 
