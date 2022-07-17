@@ -65,9 +65,8 @@
         load_data();
 
         function load_data() {
-
             $.ajax({
-                url: "user/data",
+                url: "users-list",
                 method: "POST",
                 dataType:"JSON",
                 success:function(data) {

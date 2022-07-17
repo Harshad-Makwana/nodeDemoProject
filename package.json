@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.js -e js,hbs"
+    "dev": "tsnd --respawn index.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +20,17 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.4",
-    "multer": "^1.4.5-lts.1",
-    "validater": "^1.0.5"
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.13",
+    "@types/hbs": "^4.0.1",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/mongoose": "^5.11.97",
+    "@types/multer": "^1.4.7",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
   }
 }
