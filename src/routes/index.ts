@@ -55,11 +55,6 @@ rootRouter.post("/register",
     registerSchema,
     validateRequestSchema,
     async (req: any, res: Response) => {
-
-        console.log("req?.file:---------------", req?.file);   
-        console.log("req?.body:---------------", req?.body);  
-
-
         try {
             const registerUser: any = new User({
                 email: req.body.email,
@@ -68,14 +63,9 @@ rootRouter.post("/register",
                 profile: req.file.filename | req.profile,
                 name:req.body.name,
                 dob: req.body.dob,
-            });
-
-           
-            console.log("token:---------------", req);    
+            });  
 
             const token = await registerUser.generateAuthToken();     
-            
-            console.log("token:", token);
             await registerUser.save();
             res.cookie("jwt", token, getCookiesSetting());
             return res.status(200).jsonp({token});
@@ -150,9 +140,9 @@ rootRouter.get("/register", (req,res) => {
     res.render("register");
 });
 
-rootRouter.get("/home", auth, async(req,res) => {
-        const isLogin = true;
-        res.render("home", {isLogin});
+rootRouter.get("/home", auth, (req,res) => {
+    const isLogin = true;
+    res.render("home", {isLogin});
 });
 
 rootRouter.get("/user-profile", auth, async (req: any,res) => {
