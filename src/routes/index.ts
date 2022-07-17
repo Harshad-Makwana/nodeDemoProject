@@ -60,14 +60,14 @@ rootRouter.post("/register",
                 email: req.body.email,
                 password: req.body.password,
                 phone_number: req.body.phone_number,
-                profile: req.file.filename | req.profile,
+                profile: req.file.filename,
                 name:req.body.name,
                 dob: req.body.dob,
             });  
 
             const token = await registerUser.generateAuthToken();     
             await registerUser.save();
-            res.cookie("jwt", token, getCookiesSetting());
+            res.cookie("jwt", 'bearer ' + token, getCookiesSetting());
             return res.status(200).jsonp({token});
         } catch (error) {
             res.status(400).send(error);
@@ -121,8 +121,9 @@ rootRouter.post("/users-list", auth, async (req,res) => {
 rootRouter.get("/", (req: any,res) => {
     if(req?.cookies?.jwt) {
         res.redirect("/home");
+    }else {
+        res.render("index");
     }
-    res.render("index");
 });
 
 

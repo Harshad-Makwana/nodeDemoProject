@@ -78,7 +78,7 @@
                 
                 axios.post('/register', formData, contentTypes)
                 .then(function (response) {
-                    if(response.token) {
+                    if(response.data.token) {
                         document.location = "/home";
                     }  
                 })
