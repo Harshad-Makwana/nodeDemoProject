@@ -1,0 +1,8 @@
+SECRET_KEY=[SECRET_KEY] #like qkfk$67@#djleskv;hn#$92f3fsnfh4 
+PORT=[PORT_NUMBER] # like 3000
+
+# Database Setting
+DB_NAME=[DB_NAME] # like Test2
+DB_USER_NAME=[DB_USER_NAME] # like root
+DB_PASSWORD=[DB_PASSWORD] # like Root%40123
+MONGO_URL=[URL] # like mongodb+srv://root:Root%40123@cluster0.9btr83m.mongodb.net/Test2?retryWrites=true&w=majority
