@@ -9,10 +9,14 @@ Step-2:
   - Copy .envConfig data to .env file
   - Set envarment variable
 
-Step-3
+Step-3:
   - Install package in your project by using 
   - command -> npm install
 
-Step-4
+Step-4:
   - Create server of your project
   - command -> npm run dev
+
+
+Postman collection link:
+  - https://www.getpostman.com/collections/b61cdac1375249c0d0b6
