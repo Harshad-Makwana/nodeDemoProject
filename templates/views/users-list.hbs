@@ -26,7 +26,7 @@
             </tbody>
         </table>
 
-        <div>
+        {{!-- <div>
             <input type="text" name="search" class="input-search custom-search" id="custom-search" placeholder="Search name">
             <table class="table table-striped table-hover" id="custom-table">
                 <thead>
@@ -51,7 +51,7 @@
                 </ul>
             </nav>
         </div>
-    </div>      
+    </div>       --}}
         
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -93,7 +93,7 @@
         }
 
 
-        function customSearch() {
+        {{!-- function customSearch() {
             var input, filter, table, tr, td, i, txtValue;
             input = document.getElementById("custom-search");
             filter = input.value.toUpperCase();
@@ -113,7 +113,7 @@
             }
         }
 
-        $("#custom-search").on("keyup", customSearch);
+        $("#custom-search").on("keyup", customSearch); --}}
     })
 </script>
 </html>
