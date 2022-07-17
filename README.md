@@ -1,9 +1,8 @@
-# nodeDemoProject
+# nodeDemoProject -- In TypeScript
 
 Step-1:
    - Talk new clone in your system 
-   - command -> git clone https://github.com/Harshad-Makwana/nodeDemoProject/edit/type_script_in_code
- 
+   - command -> git clone -b type_script_in_code https://github.com/Harshad-Makwana/nodeDemoProject.git
 Step-2:
   - Create .env file in root folder
   - Copy .envConfig data to .env file
